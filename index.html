@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>曲田 和史 | 葉山のこれからを、ともに。</title>
+  <link rel="stylesheet" href="assets/css/common.css">
+</head>
+<body>
+
+  <!-- ============ ヘッダー ============ -->
+  <header class="header">
+    <div class="header__inner">
+
+      <a class="logo" href="#home">
+        <span class="logo__name">曲田 和史</span>
+        <span class="logo__kana">きょくた かずふみ</span>
+        <span class="logo__roman">KAZUFUMI KYOKUTA</span>
+      </a>
+
+      <!-- スマホ用のメニューボタン。押すと下のナビが開く（JS の 1〜3 番） -->
+      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">☰</button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#home" class="is-current">ホーム</a></li>
+          <li><a href="#profile">曲田和史について</a></li>
+          <li><a href="#omoi">葉山への思い</a></li>
+          <li><a href="#policy">考えていること</a></li>
+          <li><a href="#news">活動報告</a></li>
+          <li><a href="#hayama">葉山を知る</a></li>
+          <li><a href="#info">お知らせ</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--fill header__contact" href="#contact">✉ お問い合わせ</a>
+
+      <p class="header__catch">葉山の今を知り、<br>これからを一緒につくる。</p>
+
+    </div>
+  </header>
+
+  <!-- ============ ヒーロー（トップの大きな見せ場） ============ -->
+  <section class="hero" id="home">
+
+    <!-- メイン写真。assets/images フォルダに置いた画像ファイルを、パスで指定している。
+         alt は写真が表示できないときに代わりに読まれる説明文なので、内容がわかるように書く -->
+    <img class="hero__bg" src="assets/images/hero-kyokuta-portrait_2560x1696.png"
+         alt="葉山の海辺に立つ曲田和史。背景に江ノ島と富士山、海にはウィンドサーフィン">
+
+    <div class="hero__inner">
+
+      <p class="hero__lead">
+        人がつながる。自然が息づく。<br>
+        そんな葉山を、次の世代へ。
+      </p>
+
+      <h1 class="hero__catch">
+        <span>葉山の</span>
+        <span>これからを</span>
+        <span>ともに。</span>
+      </h1>
+
+      <p class="hero__sub">
+        暮らし、自然、ひと。<br>
+        このまちの良さを未来へつなぐために。<br>
+        今できることから。
+      </p>
+
+    </div>
+
+    <!-- 毛筆の文字は画像（背景が透明な PNG）で用意して貼る。
+         alt に同じ文字を書いておくと、画像が表示できないときや読み上げのときに、文字として伝わる -->
+    <div class="hero__badge">
+      <img src="assets/images/calligraphy-45years-transparent_2466x875.png" alt="葉山に住んで 45年 60にして立つ">
+    </div>
+  </section>
+
+  <!-- ============ 考えていること（政策） ============ -->
+  <section class="section policy" id="policy">
+    <div class="container policy__inner">
+
+      <div class="policy__text">
+        <h2 class="heading">葉山の、これからのために</h2>
+        <p>
+          ここで暮らし、働き、家族を育ててきた45年。<br>
+          多くの方との出会いを力に、葉山の良さを大切にしながら、<br>
+          町の課題に向き合い、考え、行動していきます。
+        </p>
+        <a class="btn btn--line" href="#omoi">葉山への思いを見る　→</a>
+      </div>
+
+      <div class="policy__cards">
+
+        <a class="card" href="kosodate.html">
+          <div class="photo">
+            <img src="assets/images/beach-kids-fuji-view-licensed_2000x1333.jpeg"
+                 alt="富士山を望む海辺で波打ち際を走る子どもたち"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">子育て・教育</p>
+            <p class="card__desc">子どもたちの<br>未来のために</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+        <a class="card" href="kotsu.html">
+          <div class="photo">
+            <img src="assets/images/hayama-coast-route-bus-licensed_2730x1536.jpg"
+                 alt="海沿いの道を走る路線バス"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">交通・移動</p>
+            <p class="card__desc">暮らしやすい<br>移動環境を</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+        <a class="card" href="korei.html">
+          <div class="photo">
+            <img src="assets/images/coastal-path-couple-walking-licensed_2000x1335.jpeg"
+                 alt="緑のトンネルを抜けた先に海が広がる小道を、手をつないで歩くご夫婦"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">高齢者・福祉</p>
+            <p class="card__desc">人生の最期まで<br>安心して暮らせる町へ</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+        <a class="card" href="shizen.html">
+          <div class="photo">
+            <img src="assets/images/morito-beach-shrine-view-licensed_2000x1333.jpeg"
+                 alt="緑に囲まれた社を望む、穏やかな葉山の海岸"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">自然・環境</p>
+            <p class="card__desc">美しい葉山の<br>自然を未来に</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+        <a class="card" href="kanko.html">
+          <div class="photo">
+            <img src="assets/images/hayama-marina-port-view-licensed_3648x2736.jpg"
+                 alt="ヨットが浮かぶ葉山港と、山あいに広がる町並み"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">観光・地域経済</p>
+            <p class="card__desc">地域の魅力を<br>次の力に</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+        <a class="card" href="gyosei.html">
+          <div class="photo">
+            <img src="assets/images/laptop-keyboard-online-procedure-licensed_2502x1696.jpg"
+                 alt="ノートパソコンの画面で行政手続きの案内を見るようす"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="card__body">
+            <p class="card__title">行政・デジタル化</p>
+            <p class="card__desc">わかりやすく<br>開かれた行政へ</p>
+            <p class="card__arrow">→</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 曲田 和史について（プロフィール） ============ -->
+  <section class="section profile" id="profile">
+    <div class="container profile__inner">
+
+      <div class="profile__figure" style="aspect-ratio: 4 / 3;">
+        <div class="photo" style="width: 100%; height: 100%;">
+          <img src="assets/images/kyokuta-hillside-town-view-licensed_2390x1792.jpg"
+               alt="緑の高台から葉山の街並みを見つめる曲田和史。「このまちで ずっと、これからも」の文字入り"
+               style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+
+      <div class="profile__text">
+        <h2 class="heading">曲田 和史について<span class="heading-en">PROFILE</span></h2>
+        <p>
+          1980年から葉山に暮らし、航空会社で30年以上勤務してきました。<br>
+          テニスや海のスポーツに関心を持ち、80歳になってもテニスで日本一を目指すことが夢です。<br>
+          海と山、富士山の景色、地域のお店や人の力をつなぎ、葉山を楽しむことが、<br>
+          町を支えることにつながる仕組みを考えています。
+        </p>
+        <p>
+          「60にして立つ」。<br>
+          皆さんの声に耳を傾けながら、人生の最期まで安心して暮らせる町を、ともに考えていきます。
+        </p>
+        <a class="btn btn--line" href="profile.html">プロフィールを見る　→</a>
+      </div>
+
+      <!-- アイコンは絵文字（ただの文字）を使っているので、外部のライブラリはいらない -->
+      <ul class="profile__points">
+        <li><span class="icon">🏠</span>1980年から葉山在住</li>
+        <li><span class="icon">✈️</span>航空会社に30年以上勤務</li>
+        <li><span class="icon">🎾</span>テニス・海のスポーツが好き</li>
+        <li><span class="icon">📚</span>学び続ける姿勢</li>
+        <li><span class="icon">🤝</span>対話を大切に</li>
+        <li><span class="icon">👪</span>次の世代へつなぐ</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ============ 活動報告 ＋ お知らせ ============ -->
+  <section class="section news" id="news">
+    <div class="container news__inner">
+
+      <div id="omoi">
+        <div class="news__head">
+          <h2 class="heading">活動報告<span class="heading-en">NEWS</span></h2>
+          <a class="link-more" href="#news">一覧を見る　→</a>
+        </div>
+
+        <div class="news__cards">
+
+          <a class="card news__card" href="#news">
+            <div class="photo">
+              <img src="assets/images/hayama-support-site-launch-wingjump_2390x1792.jpg"
+                   alt="ウイングフォイルでジャンプする曲田和史と「最愛の葉山、応援サイトを開設」の文字"
+                   style="width: 100%; height: 100%; object-fit: cover; object-position: center bottom;">
+            </div>
+            <div class="card__body">
+              <time datetime="2026-10-15">2026.10.15</time>
+              <p>ホームページを<br>開設しました</p>
+              <p class="card__arrow">→</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div id="info">
+        <div class="news__head">
+          <h2 class="heading">お知らせ<span class="heading-en">INFORMATION</span></h2>
+          <a class="link-more" href="#info">一覧を見る　→</a>
+        </div>
+
+        <ul class="info__list">
+          <li><a href="#info"><time datetime="2026-10-15">2026.10.15</time>ホームページを開設しました。<span class="arrow">›</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ お問い合わせへの呼びかけ ============ -->
+  <section class="cta" id="contact">
+    <div class="container cta__inner">
+
+      <div>
+        <h2 class="cta__title">
+          葉山の今を知り、<br>
+          これからを一緒につくる。
+        </h2>
+        <p class="cta__text">
+          ご意見・ご提案をお待ちしています。<br>
+          お気軽にご連絡ください。
+        </p>
+        <a class="btn btn--white" href="#contact">✉ お問い合わせフォームへ　→</a>
+      </div>
+
+      <p class="cta__sign" id="hayama">
+        <strong>曲田 和史</strong>
+        <small>KAZUFUMI KYOKUTA</small>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ============ フッター ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <p style="margin: 0;">© 2026 曲田 和史 All rights reserved.</p>
+
+      <ul class="footer__links">
+        <li><a href="sitepolicy.html">サイトポリシー</a></li>
+        <li><a href="privacypolicy.html">プライバシーポリシー</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+
+      <ul class="footer__sns">
+        <li><a href="#" aria-label="Facebook">f</a></li>
+        <li><a href="#" aria-label="Instagram">IG</a></li>
+        <li><a href="#" aria-label="YouTube">▶</a></li>
+      </ul>
+
+    </div>
+  </footer>
+
+  <!-- 右下に固定される「上に戻る」ボタン -->
+  <button class="to-top" id="toTopBtn" aria-label="ページの先頭へ戻る">↑</button>
+
+  <script>
+    // 1. スマホ用のメニューボタンと、開け閉めしたいナビを探しておく
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    // 2. メニューボタンがクリックされたら、ナビに is-open という印を付け外しする
+    //    （classList.toggle は「付いていなければ付ける／付いていれば外す」という便利な命令）
+    menuBtn.addEventListener("click", function () {
+      nav.classList.toggle("is-open");
+    });
+
+    // 3. ナビの中のリンクが押されたら、開いたメニューを閉じる
+    //    querySelectorAll で「当てはまるものすべて」を集め、forEach で 1つずつ処理する
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("is-open");
+      });
+    });
+
+    // 4. 右下の「上に戻る」ボタンを探しておく
+    const toTopBtn = document.getElementById("toTopBtn");
+
+    // 5. ページがスクロールされるたびに、中括弧の中を実行する
+    //    window.scrollY は「今どれくらい下までスクロールしたか」を px であらわす数
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 400) {
+        toTopBtn.classList.add("is-visible");     // 400px より下なら、ボタンを表示する
+      } else {
+        toTopBtn.classList.remove("is-visible");  // それより上なら、ボタンを隠す
+      }
+    });
+
+    // 6. 「上に戻る」ボタンがクリックされたら、ページの先頭（top: 0）までなめらかに動かす
+    toTopBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // 7. SNSのアイコンがクリックされたら、まだ準備中であることを知らせる
+    //    forEach で3つのアイコンすべてに同じ処理をつける
+    document.querySelectorAll(".footer__sns a").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();  // リンク先へ移動しようとするのを止める
+        alert("SNSアカウントは現在準備中です。");
+      });
+    });
+  </script>
+
+</body>
+</html>

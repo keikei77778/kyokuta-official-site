@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交通・移動 | 曲田 和史</title>
+  <link rel="stylesheet" href="assets/css/common.css">
+</head>
+<body>
+
+  <!-- ============ ヘッダー（トップページと同じもの） ============ -->
+  <header class="header">
+    <div class="header__inner">
+
+      <a class="logo" href="index.html#home">
+        <span class="logo__name">曲田 和史</span>
+        <span class="logo__kana">きょくた かずふみ</span>
+        <span class="logo__roman">KAZUFUMI KYOKUTA</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">☰</button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#home">ホーム</a></li>
+          <li><a href="index.html#profile">曲田和史について</a></li>
+          <li><a href="index.html#omoi">葉山への思い</a></li>
+          <li><a href="index.html#policy" class="is-current">考えていること</a></li>
+          <li><a href="index.html#news">活動報告</a></li>
+          <li><a href="index.html#hayama">葉山を知る</a></li>
+          <li><a href="index.html#info">お知らせ</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--fill header__contact" href="index.html#contact">✉ お問い合わせ</a>
+
+      <p class="header__catch">葉山の今を知り、<br>これからを一緒につくる。</p>
+
+    </div>
+  </header>
+
+  <!-- ============ ページ見出し ============ -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="index.html#home">ホーム</a> ＞
+        <a href="index.html#policy">考えていること</a> ＞
+        交通・移動
+      </p>
+      <h1 class="page-hero__title">交通・移動</h1>
+      <p class="page-hero__lead">暮らしやすい移動環境を</p>
+    </div>
+  </section>
+
+  <!-- ============ 本文 ============ -->
+  <section class="section detail">
+    <div class="container detail__inner">
+
+      <h3>新しい乗り物を増やすだけでなく、使える交通へ</h3>
+
+      <div class="photo">
+        <img src="assets/images/night-taxi-stand-licensed_964x612.jpg"
+             alt="夜のタクシー乗り場に停まるタクシーと利用客のようす"
+             style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <p>
+        葉山町では、予約に応じて運行する乗合タクシー「はやまるタクシー」の実証運行が行われています。
+        町の資料によると、<strong>2026年3月末時点の登録者827人に対し、2025年7月から2026年3月までに
+        利用した登録者は220人、約27％</strong>でした<span class="cite">[<a href="#src1">1</a>]</span>。
+        この数字だけで成否を決めるのではなく、使った方と使わなかった方の両方の声を、改善に
+        つなげたいと考えています。
+      </p>
+
+      <div class="chart">
+        <svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="登録者のうち利用した人の割合を示す円グラフ">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#d3e5f1" stroke-width="20"></circle>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#12406b" stroke-width="20"
+                  stroke-dasharray="84.8 314.16" transform="rotate(-90 60 60)"></circle>
+          <text x="60" y="67" font-size="22" font-weight="700" fill="#12406b" text-anchor="middle">27%</text>
+        </svg>
+        <ul class="chart__legend">
+          <li><span class="dot" style="background:#12406b;"></span>実際に利用（220人）</li>
+          <li><span class="dot" style="background:#d3e5f1;"></span>登録のみ（607人）</li>
+        </ul>
+      </div>
+      <p class="chart__caption" style="margin-top:-16px;">出典：葉山町「はやまるタクシー実証運行」資料<span class="cite">[<a href="#src1">1</a>]</span></p>
+
+      <p>
+        2026年6月から9月までの運行案内では、運行時間が平日9時15分から16時45分までに延長され、
+        乗降ポイントも追加されています。ただし、13時から14時までは運休するなど、利用できる時間には
+        条件があります<span class="cite">[<a href="#src2">2</a>]</span>。すでに行われている改善を
+        踏まえ、予約のしやすさ、行きたい場所とのつながり、帰りの便の確保などを確かめていくことが
+        大切です。
+      </p>
+
+      <p>
+        私は、利用回数だけでなく、<strong>「通院や買い物を諦めずに済んだか」「家族の送迎負担が
+        軽くなったか」</strong>という暮らしの変化も確認することを提案します。運行経費と利用状況を
+        分かりやすく示し、必要な移動を無理なく支え続けられる仕組みを考えます。
+      </p>
+
+      <h3>夜の帰宅と、日常の移動を切り分けて考える</h3>
+
+      <div class="photo">
+        <img src="assets/images/night-station-platform-commuters-licensed_1049x610.jpg"
+             alt="夜の駅のホームで電車を待つ通勤客のようす"
+             style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <p>
+        夜間の移動については、昼間の買い物・通院とは異なる需要として調べたいと考えています。
+        どの時間帯に、どこからどこへ、何人程度の移動が必要なのかを確認し、京急などの交通事業者と、
+        小型車両や予約制の運行を含めて協議することを提案します。
+      </p>
+
+      <div class="note">
+        ※ 交通事業者との新たな協議・連携は、現時点での提案です。具体的な実施が決まっているもの
+        ではありません。
+      </div>
+
+      <p>
+        地域の人材には、案内や予約支援など、それぞれの経験を生かせる役割で関わっていただくことを
+        考えます。安全な運行体制を前提に、既存のバスやタクシーと競合するのではなく、足りない部分を
+        補う交通を目指します。
+      </p>
+
+      <p>
+        観光で訪れる人の便利さだけでなく、町民が日常的に使う交通を守ることも重視します。駐車場の
+        有効活用や公共交通への案内も組み合わせ、暮らしと観光の両立を考えていきます。
+      </p>
+
+      <!-- ============ 出典 ============ -->
+      <div class="sources">
+        <h2>出典</h2>
+        <ol>
+          <li id="src1">葉山町「はやまるタクシー実証運行に関する資料」
+            <a href="https://www.town.hayama.lg.jp/material/files/group/2/R80511shiryo1.pdf" target="_blank" rel="noopener">town.hayama.lg.jp</a>
+          </li>
+          <li id="src2">葉山町「地域公共交通（はやまるタクシー）」案内ページ
+            <a href="https://www.town.hayama.lg.jp/soshiki/seisaku/tiikikoukyoukoutuu/HAYAMARU.html" target="_blank" rel="noopener">town.hayama.lg.jp</a>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ほかの政策も見る ============ -->
+  <section class="section policy-nav">
+    <div class="container">
+      <h2 class="heading" style="font-size: 1.3rem;">ほかの政策も見る</h2>
+      <div class="policy-nav__grid">
+        <a href="kosodate.html">子育て・教育</a>
+        <a href="kotsu.html" class="is-current">交通・移動</a>
+        <a href="korei.html">高齢者・福祉</a>
+        <a href="shizen.html">自然・環境</a>
+        <a href="kanko.html">観光・地域経済</a>
+        <a href="gyosei.html">行政・デジタル化</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ お問い合わせへの呼びかけ ============ -->
+  <section class="cta" id="contact">
+    <div class="container cta__inner">
+
+      <div>
+        <h2 class="cta__title">
+          葉山の今を知り、<br>
+          これからを一緒につくる。
+        </h2>
+        <p class="cta__text">
+          ご意見・ご提案をお待ちしています。<br>
+          お気軽にご連絡ください。
+        </p>
+        <a class="btn btn--white" href="index.html#contact">✉ お問い合わせフォームへ　→</a>
+      </div>
+
+      <p class="cta__sign">
+        <strong>曲田 和史</strong>
+        <small>KAZUFUMI KYOKUTA</small>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ============ フッター ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <p style="margin: 0;">© 2026 曲田 和史 All rights reserved.</p>
+
+      <ul class="footer__links">
+        <li><a href="sitepolicy.html">サイトポリシー</a></li>
+        <li><a href="privacypolicy.html">プライバシーポリシー</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+
+      <ul class="footer__sns">
+        <li><a href="#" aria-label="Facebook">f</a></li>
+        <li><a href="#" aria-label="Instagram">IG</a></li>
+        <li><a href="#" aria-label="YouTube">▶</a></li>
+      </ul>
+
+    </div>
+  </footer>
+
+  <!-- 右下に固定される「上に戻る」ボタン -->
+  <button class="to-top" id="toTopBtn" aria-label="ページの先頭へ戻る">↑</button>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    menuBtn.addEventListener("click", function () {
+      nav.classList.toggle("is-open");
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("is-open");
+      });
+    });
+
+    const toTopBtn = document.getElementById("toTopBtn");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 400) {
+        toTopBtn.classList.add("is-visible");
+      } else {
+        toTopBtn.classList.remove("is-visible");
+      }
+    });
+
+    toTopBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // 7. SNSのアイコンがクリックされたら、まだ準備中であることを知らせる
+    //    forEach で3つのアイコンすべてに同じ処理をつける
+    document.querySelectorAll(".footer__sns a").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();  // リンク先へ移動しようとするのを止める
+        alert("SNSアカウントは現在準備中です。");
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1005 @@
+    /* 1. よく使う色をここにまとめておく。--名前 で作った値は、下のほうで var(--名前) と書いて呼び出せる */
+    :root {
+      --navy:       #12406b;   /* 見出しやボタンに使う濃い青 */
+      --navy-dark:  #0c2d4d;   /* いちばん濃い青（ボタンを押したときなど） */
+      --navy-light: #3c7bb0;   /* 少し明るい青 */
+      --sky:        #eaf2f8;   /* 背景のうすい水色 */
+      --sky-deep:   #d3e5f1;   /* 少し濃い水色 */
+      --text:       #1f3247;   /* ふつうの文字の色 */
+      --text-sub:   #5f7488;   /* 補足の文字の色（少し薄い） */
+      --line:       #dbe7f0;   /* 区切り線や枠の色 */
+      --white:      #ffffff;
+    }
+
+    /* 2. ブラウザが最初から付けている余白などを打ち消しておく。* は「すべての要素」という意味 */
+    * {
+      box-sizing: border-box;  /* 幅の計算に padding と border も含める（レイアウトが崩れにくくなる） */
+    }
+
+    /* 3. ページ全体の基本の見た目 */
+    html {
+      scroll-behavior: smooth; /* ページ内リンクを押したとき、ぴょんと飛ばずになめらかに動く */
+    }
+
+    body {
+      margin: 0;
+      font-family: "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text);
+      background-color: var(--white);
+    }
+
+    img {
+      max-width: 100%;         /* 画面より大きい画像がはみ出さないようにする */
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;          /* inherit = 親と同じ指定を受けつぐ。ここでは文字色をそのままにする */
+      text-decoration: none;   /* リンクの下線を消す */
+    }
+
+    /* 4. 中身を画面の中央に置くための箱。max-width で広がりすぎるのを止める */
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;          /* 左右の margin を auto にすると中央に寄る */
+      padding: 0 24px;
+    }
+
+    /* 5. セクション（大きなかたまり）の上下の余白 */
+    .section {
+      padding: 80px 0;
+      /* 上に固定されているヘッダーの下にタイトルが隠れないよう、リンクで飛んだときの余白をとる */
+      scroll-margin-top: 90px;
+    }
+
+    /* 6. セクションの見出し。日本語の大きい文字と、そのうしろの小さい英語をセットで使う */
+    .heading {
+      margin: 0 0 20px;
+      font-size: 2rem;         /* rem は「body の文字サイズの何倍か」。2rem = 32px */
+      font-weight: 700;
+      letter-spacing: 0.04em;  /* 文字と文字のすき間を少し広げると上品に見える */
+      color: var(--navy);
+    }
+
+    .heading-en {
+      margin-left: 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--text-sub);
+    }
+
+    /* 7. 【写真のかわりの箱】まだ写真がないので、うすい水色の四角で場所だけ作っておく。
+          写真ができたら、この <div class="photo"> を <img src="ファイル名" alt="説明"> に差し替える */
+    .photo {
+      display: flex;                 /* 中の文字を上下左右の中央に置くための指定（この行と下の2行がセット） */
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(150deg, var(--sky-deep), #b9d6e8);
+      border-radius: 4px;
+      overflow: hidden;              /* 中身が箱からはみ出したら切り取る */
+    }
+
+    .photo span {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      text-align: center;
+      color: #4a6d87;
+    }
+
+    /* 8. ボタンの共通の見た目。塗りつぶしの青ボタンと、枠だけの白ボタンの2種類を用意する */
+    .btn {
+      display: inline-flex;          /* 文字と矢印を横に並べつつ、上下の中央でそろえる */
+      align-items: center;
+      gap: 12px;                     /* 中の要素どうしのすき間 */
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      letter-spacing: 0.05em;
+      border-radius: 999px;          /* とても大きい値にすると、左右が半円のカプセル型になる */
+      border: 1px solid var(--navy);
+      cursor: pointer;               /* マウスを重ねたときの矢印を「指」の形にする */
+      transition: 0.25s;             /* 色などが変わるとき、0.25 秒かけてなめらかに変える */
+    }
+
+    .btn--fill {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    /* 9. :hover は「マウスを重ねたとき」の見た目 */
+    .btn--fill:hover {
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
+    }
+
+    .btn--line {
+      color: var(--navy);
+      background: transparent;       /* transparent = 透明（背景色なし） */
+    }
+
+    .btn--line:hover {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    /* 10. ヘッダー。position: sticky でスクロールしても画面の上にはりつく */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;                   /* 数字が大きいほど手前に表示される */
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);    /* うしろをぼかして、すこし透けたガラスのように見せる */
+    }
+
+    .header__inner {
+      display: flex;                 /* 中身を横一列に並べる */
+      align-items: center;
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    /* 11. 左上の名前（ロゴ）。明朝体にすると落ちついた雰囲気になる */
+    .logo {
+      flex-shrink: 0;                /* 画面が狭くなっても、この部分は縮ませない */
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+      line-height: 1.3;
+    }
+
+    .logo__name {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+    }
+
+    .logo__kana,
+    .logo__roman {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--text-sub);
+    }
+
+    /* 12. メニュー（ナビゲーション）。ul の点を消して横に並べる */
+    .nav {
+      margin-right: auto;            /* 右側の margin を auto にすると、残りのすき間を全部そこに使う＝左に寄る */
+    }
+
+    .nav__list {
+      display: flex;
+      gap: 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;              /* 箇条書きの点を消す */
+    }
+
+    .nav__list a {
+      display: inline-block;
+      padding: 4px 0;
+      font-size: 0.85rem;
+      border-bottom: 2px solid transparent;  /* 下線の場所を先に作っておき、色だけ透明にしておく */
+      transition: 0.2s;
+    }
+
+    .nav__list a:hover,
+    .nav__list a.is-current {        /* is-current は「今見ているページ」に付ける印 */
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+    }
+
+    /* 13. ヘッダーのいちばん右の小さなキャッチコピー */
+    .header__catch {
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-sub);
+    }
+
+    /* 14. スマホ用のメニューボタン。ふだんは display: none で隠しておき、画面が狭いときだけ出す（下の 33 番） */
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 1.2rem;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    /* 15. ヒーロー（トップのいちばん目立つ場所）。メイン写真を全面に敷き、その上に文字を重ねる。
+          .hero::before は写真の上にかぶせる「白いベール」。左半分だけ白くして、文字を読みやすくしている。
+          （::before は、その要素の中に作れる飾り用の箱。content がないと表示されないのがお約束） */
+    .hero {
+      position: relative;            /* 中の要素を position: absolute で自由に置けるようにする土台 */
+      overflow: hidden;
+      background-color: #9fd0ef;     /* 写真が表示される前や、読み込めなかったときの色 */
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;                      /* 上下左右ぴったり 0 = 親（.hero）いっぱいに広げる */
+      z-index: 1;                    /* 数字が大きいほど手前。写真（0）より手前、文字（2）より後ろ */
+      background: linear-gradient(100deg,
+        rgba(255, 255, 255, 0.90) 0%,
+        rgba(255, 255, 255, 0.74) 30%,
+        rgba(255, 255, 255, 0.20) 54%,
+        rgba(255, 255, 255, 0.00) 70%);
+    }
+
+    /* 16. メイン写真。object-fit: cover は「箱いっぱいに、写真の比率を保ったまま切り取って表示する」指定。
+          object-position で表示の中心をずらし、右寄りに写っている人物が切れないようにしている */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 72% center;
+    }
+
+    /* 17. ヒーローの文字を入れる箱。写真とベールより手前に出したいので z-index: 2 にする */
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;                 /* grid は中身を「表のマス目」のように置くしくみ */
+      grid-template-columns: minmax(0, 600px);  /* 左に1列だけ作る＝文字が画面の左半分におさまる */
+      align-content: center;         /* 中身をたての中央にそろえる */
+      max-width: 1280px;
+      margin: 0 auto;                /* 左右の margin を auto にすると中央に寄る */
+      padding: 72px 24px;
+      min-height: 600px;
+    }
+
+    /* 18. キャッチコピーの上に置くリード文 */
+    .hero__lead {
+      margin: 0 0 24px;
+      font-size: 1rem;
+      line-height: 2;
+      letter-spacing: 0.06em;
+      color: #123f60;
+      text-shadow: 0 1px 6px rgba(255, 255, 255, 0.8);  /* 背景が写真でも読めるよう、白い光を後ろに敷く */
+    }
+
+    /* 19. 大きなキャッチコピー。明朝体＋広めの字間で、手書きの筆文字に近い印象にする。
+          2行目・3行目を少しずつ右にずらして、手書きらしい流れを作っている */
+    .hero__catch {
+      margin: 0 0 28px;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);  /* clamp(最小, ふつう, 最大) で画面幅に応じて字の大きさを変える */
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      color: #0e3a5c;
+      text-shadow: 0 1px 10px rgba(255, 255, 255, 0.75);
+    }
+
+    .hero__catch span { display: block; }
+
+    .hero__catch span:nth-child(2) { margin-left: 1.2em; }  /* nth-child(2) = 2番目の要素 */
+    .hero__catch span:nth-child(3) {
+      margin-left: 2.4em;
+      border-bottom: 2px solid #2f7cb0;   /* 3行目の下に、下線の飾りを引く */
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+
+    /* 20. キャッチコピーの下の説明文 */
+    .hero__sub {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 2;
+      color: #14405f;
+      text-shadow: 0 1px 6px rgba(255, 255, 255, 0.8);
+    }
+
+    /* 21. 「葉山に住んで45年／60にして立つ」の毛筆バッジ。
+          毛筆の画像が横長（16:9）なので、下じきも丸ではなく「角の丸い横長の板」にして形をそろえている。
+          （正円にすると、横長の画像を収めたときに上下へ大きなすき間ができて、文字が小さくなってしまう）
+          位置をずらしたいときは right と bottom の数字を変える */
+    .hero__badge {
+      position: absolute;
+      right: 4%;
+      bottom: 40px;
+      z-index: 2;
+      width: min(430px, 40%);        /* min(A, B) は「A と B の小さいほう」。画面が狭いと自動で縮む */
+      /* 画像は文字ギリギリまで切り詰めてあるので、下じき側で余白をとる */
+      padding: 16px 22px;
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 16px;
+      /* box-shadow は影。1つめ（inset）で内側に細い枠線を描き、2つめで外側にやわらかい影を落とす */
+      box-shadow:
+        inset 0 0 0 1px rgba(18, 64, 107, 0.2),
+        0 8px 30px rgba(18, 64, 107, 0.25);
+    }
+
+    /* 【毛筆の文字は画像で表示する】
+       パソコンによって入っている書体がちがい、毛筆の書体がないと明朝体になってしまう。
+       そこで文字そのものを画像（背景が透明な PNG）にして貼り、どの環境でも同じ見た目にしている。
+       width: 100% で下じきの幅いっぱいに広げ、height: auto で縦を写真の比率どおりに自動で決めている */
+    .hero__badge img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* 22. 政策のセクション。背景をうすい水色にして、前後のセクションと区切る */
+    .policy {
+      background: var(--sky);
+    }
+
+    .policy__inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;   /* 左に説明文、右にカード一覧 */
+      gap: 40px;
+    }
+
+    .policy__text p {
+      margin: 0 0 28px;
+      font-size: 0.95rem;
+    }
+
+    /* 23. 政策カードを横に並べる。auto-fit と minmax で、画面幅に合わせて折り返す数が自動で変わる */
+    .policy__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    /* 24. カードにマウスを重ねたら、少し浮き上がって影が付く */
+    .card:hover {
+      transform: translateY(-4px);   /* Y 方向（縦）に -4px 動かす＝4px 上に上げる */
+      box-shadow: 0 10px 24px rgba(18, 64, 107, 0.12);
+    }
+
+    .card .photo {
+      aspect-ratio: 4 / 3;
+      border-radius: 0;
+    }
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;                  /* あまったすき間をこの部分で埋める＝矢印が下にそろう */
+      padding: 14px 14px 12px;
+    }
+
+    .card__title {
+      margin: 0 0 6px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .card__desc {
+      margin: 0 0 14px;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: var(--text-sub);
+    }
+
+    .card__arrow {
+      margin-top: auto;              /* 上の margin を auto にすると、カードのいちばん下に押しやられる */
+      text-align: right;
+      color: var(--navy-light);
+    }
+
+    /* 25. プロフィールのセクション。写真・文章・特徴リストの3列 */
+    .profile__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .profile__figure {
+      position: relative;
+      aspect-ratio: 4 / 5;
+    }
+
+    /* 26. 写真の上に重ねる手書き風の文字。position: absolute で写真の中の好きな場所に置く。
+          右上の空（人物の顔にかからない場所）に置き、白抜き文字にして写真の上でも読みやすくする */
+    .profile__handwrite {
+      position: absolute;
+      top: 6%;
+      right: 6%;
+      margin: 0;
+      text-align: right;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+      font-size: 1.15rem;
+      line-height: 2;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.5),
+        0 2px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .profile__text p {
+      margin: 0 0 28px;
+      font-size: 0.95rem;
+    }
+
+    /* 27. 右側の「特徴」リスト。アイコン（絵文字）と文字を横に並べる */
+    .profile__points {
+      margin: 0;
+      padding: 28px 24px;
+      list-style: none;
+      background: var(--sky);
+      border-radius: 4px;
+    }
+
+    .profile__points li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      font-size: 0.85rem;
+    }
+
+    .profile__points li + li {        /* 「li のすぐ後ろに続く li」＝2つめ以降にだけ線を引く */
+      border-top: 1px solid var(--sky-deep);
+    }
+
+    .profile__points .icon {
+      flex-shrink: 0;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* 28. 活動報告とお知らせを左右に並べる */
+    .news {
+      background: var(--sky);
+    }
+
+    .news__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+    }
+
+    /* 29. 見出しと「一覧を見る」を、左右の両端に離して置く */
+    .news__head {
+      display: flex;
+      align-items: baseline;         /* 文字の下の線（ベースライン）でそろえる */
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .news__head .heading { margin: 0; font-size: 1.6rem; }
+
+    .link-more {
+      font-size: 0.8rem;
+      color: var(--navy);
+      white-space: nowrap;           /* 「一覧を見る →」を途中で改行させない */
+    }
+
+    .link-more:hover { color: var(--navy-light); }
+
+    .news__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .news__card .photo { aspect-ratio: 16 / 10; border-radius: 0; }
+
+    .news__card time {                /* time は「日付」をあらわすタグ */
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.7rem;
+      color: var(--text-sub);
+    }
+
+    .news__card p {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* 30. お知らせは、白い箱の中に日付と本文を1行ずつ並べる */
+    .info__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .info__list li + li { border-top: 1px solid var(--line); }
+
+    .info__list a {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+
+    .info__list a:hover { background: var(--sky); }
+
+    .info__list time {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    .info__list .arrow {
+      margin-left: auto;
+      color: var(--navy-light);
+    }
+
+    /* 31. ページ下部の呼びかけ（CTA）。夕焼けのようなグラデーションを背景にする */
+    .cta {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 0;
+      background: linear-gradient(105deg, #2f6f9e 0%, #6c93b0 45%, #d99a72 80%, #f0c9a0 100%);
+      color: var(--white);
+    }
+
+    .cta__inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .cta__title {
+      margin: 0 0 16px;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+    }
+
+    .cta__text {
+      margin: 0 0 28px;
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+
+    /* 32. 白背景に濃い青の文字のボタン（夕焼けの上でも読みやすいように色を変える） */
+    .btn--white {
+      color: var(--navy);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .btn--white:hover {
+      color: var(--white);
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
+    }
+
+    .cta__sign {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .cta__sign strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    .cta__sign small {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      opacity: 0.85;                 /* opacity は透明度。1 が不透明、0 で見えなくなる */
+    }
+
+    /* 33. フッター */
+    .footer {
+      padding: 24px 0;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;               /* 入りきらないときは折り返す */
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 22px;
+      margin: 0 0 0 auto;            /* 左の margin を auto にして、右側へ寄せる */
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer__links a:hover { color: var(--navy); }
+
+    .footer__sns {
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 34. SNS の丸いアイコン。写真を使わず、文字を丸で囲んで作っている */
+    .footer__sns a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--navy-light);
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+
+    .footer__sns a:hover { background: var(--navy); }
+
+    /* 35. 右下の「上に戻る」ボタン。ふだんは opacity: 0 で見えなくしておき、JS で is-visible を付けて出す */
+    .to-top {
+      position: fixed;               /* 画面に貼りつけて、スクロールしても動かない */
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;          /* 見えていないあいだはクリックできないようにする */
+      transition: 0.3s;
+      box-shadow: 0 4px 14px rgba(18, 64, 107, 0.15);
+    }
+
+    .to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .to-top:hover {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    /* 36. 画面が狭いとき（タブレット）の調整。@media は「画面幅が○px 以下のときだけ効く指定」 */
+    @media (max-width: 1000px) {
+      .hero__inner { min-height: 480px; padding: 56px 24px; }
+      .hero__badge { right: 20px; bottom: 20px; width: min(340px, 50%); padding: 12px 16px; }
+      .policy__inner,
+      .profile__inner,
+      .news__inner { grid-template-columns: 1fr; }
+      .header__catch { display: none; }
+      .nav__list { gap: 16px; }
+      .nav__list a { font-size: 0.8rem; }
+    }
+
+    /* 37. 画面が狭いとき（スマホ）の調整。メニューはボタンを押したときだけ開くようにする */
+    @media (max-width: 760px) {
+      .section { padding: 56px 0; }
+      .heading { font-size: 1.6rem; }
+      .menu-btn { display: block; }            /* 隠していたメニューボタンを表示する */
+
+      .nav {
+        display: none;                         /* ふだんはメニューを隠す */
+        position: absolute;
+        top: 100%;                             /* ヘッダーのすぐ下 */
+        left: 0;
+        right: 0;
+        padding: 8px 24px 16px;
+        background: var(--white);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav.is-open { display: block; }         /* JS で is-open が付いたときだけ表示する */
+
+      .nav__list {
+        flex-direction: column;                /* スマホでは縦に並べる */
+        gap: 0;
+      }
+
+      .nav__list li + li { border-top: 1px solid var(--line); }
+      .nav__list a { display: block; padding: 12px 0; font-size: 0.9rem; }
+
+      .header__inner { position: relative; gap: 12px; }
+      .header__contact { display: none; }
+      /* スマホでは写真の上に文字を重ねるのをやめ、「写真 → 文字」の順に上から並べる。
+         position: static にすると、重ねる指定が解けて、ふつうの並び順に戻る */
+      .hero__bg { position: static; height: auto; aspect-ratio: 3 / 2; }
+      .hero::before { display: none; }         /* 文字を重ねないので、白いベールもいらない */
+      .hero__inner { min-height: 0; padding: 32px 24px 36px; }
+      /* スマホでは写真の下に、中央ぞろえで置く。
+         calc(100% - 48px) は「画面いっぱいから左右の余白 24px ずつを引いた幅」という計算 */
+      .hero__badge {
+        position: static;
+        width: calc(100% - 48px);
+        max-width: 420px;
+        margin: 0 auto 32px;
+      }
+      .cta__inner { grid-template-columns: 1fr; }
+      .cta__sign { text-align: left; }
+      .footer__links { margin-left: 0; }
+    }
+
+    /* 38. OS 側で「動きを減らす」設定にしている人には、なめらかスクロールを止める */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card:hover { transform: none; }
+    }
+
+/* ============================================================
+   ここから下は、政策の詳細ページ（子育て・教育、交通・移動など）用のスタイル
+   ============================================================ */
+
+/* 39. 詳細ページの上部。パンくずリストとタイトルを、うすい水色の帯の中に置く */
+.page-hero {
+  padding: 48px 0 40px;
+  background: linear-gradient(150deg, var(--sky-deep), #b9d6e8);
+}
+
+.breadcrumb {
+  margin: 0 0 16px;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.breadcrumb a:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.page-hero__title {
+  margin: 0 0 10px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+}
+
+.page-hero__lead {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-sub);
+}
+
+/* 40. 詳細ページの本文。読みやすいよう横幅を少し狭くする */
+.detail__inner {
+  max-width: 760px;
+}
+
+.detail h3 {
+  margin: 48px 0 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.6;
+}
+
+.detail h3:first-child {
+  margin-top: 0;
+}
+
+.detail p {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+}
+
+.detail strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* 41. 本文の途中に置く写真プレースホルダー。まだ写真がないので、場所だけ横長で作っておく */
+.detail .photo {
+  aspect-ratio: 16 / 9;
+  margin: 28px 0 32px;
+}
+
+/* 42. 文章中の出典番号（[1] など）のリンク */
+.cite {
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+.cite a {
+  color: var(--navy-light);
+}
+
+/* 43. 「※まだ決まっていません」といった注意書きを入れる箱 */
+.note {
+  margin: 20px 0 32px;
+  padding: 14px 18px;
+  background: var(--sky);
+  border-left: 3px solid var(--navy-light);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.8;
+}
+
+/* 44. ページのいちばん下に置く、出典（参考にした資料）の一覧 */
+.sources {
+  margin: 56px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.sources h2 {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.sources ol {
+  margin: 0;
+  padding-left: 1.4em;
+  font-size: 0.75rem;
+  line-height: 2;
+  color: var(--text-sub);
+  word-break: break-all;
+}
+
+.sources a {
+  color: var(--navy-light);
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+/* 45. 数値を示す簡単な図表（円グラフ・棒グラフ）の入れ物。
+      SVG を左に、色の意味を説明する凡例（はんれい）を右に並べる */
+.chart {
+  margin: 28px 0 32px;
+  padding: 24px;
+  background: var(--sky);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.chart svg {
+  flex-shrink: 0;
+}
+
+.chart__legend {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.chart__legend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.chart__legend .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chart__caption {
+  margin: 8px 0 0;
+  font-size: 0.7rem;
+  color: var(--text-sub);
+}
+
+/* 46. 詳細ページの下部に置く、ほかの政策への案内リンク */
+.policy-nav {
+  background: var(--sky);
+}
+
+.policy-nav__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.policy-nav__grid a {
+  display: block;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  transition: 0.2s;
+}
+
+.policy-nav__grid a:hover {
+  border-color: var(--navy-light);
+  box-shadow: 0 6px 16px rgba(18, 64, 107, 0.1);
+}
+
+.policy-nav__grid a.is-current {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* 47. 詳細ページ、画面が狭いときの調整 */
+@media (max-width: 760px) {
+  .page-hero__title { font-size: 1.7rem; }
+  .chart { flex-direction: column; align-items: flex-start; }
+}
+
+/* 48. プロフィールページの、経歴・資格の一覧表 */
+.profile-table {
+  width: 100%;
+  margin: 12px 0 40px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.profile-table th,
+.profile-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.profile-table th {
+  width: 160px;
+  color: var(--navy);
+  font-weight: 700;
+  background: var(--sky);
+  white-space: nowrap;
+}
+
+/* 49. スマホでは表を「見出し＋内容」の縦並びに崩す */
+@media (max-width: 600px) {
+  .profile-table, .profile-table tbody, .profile-table tr,
+  .profile-table th, .profile-table td {
+    display: block;
+    width: auto;
+  }
+  .profile-table tr { padding: 12px 0; }
+  .profile-table th { border-bottom: none; padding: 0 0 4px; }
+  .profile-table td { padding: 0 0 4px; }
+}
